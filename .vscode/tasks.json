@@ -1,0 +1,69 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Maven: clean install",
+            "type": "shell",
+            "command": "mvn clean package",
+            "group": {
+                "kind": "build",
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Maven: tomcat7-run",
+            "type": "shell",
+            "command": "mvn tomcat7:run",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "Maven: clean install",
+            "problemMatcher": []
+        },
+        {
+            "label": "Maven: tomcat7-stop",
+            "type": "shell",
+            "command": "mvn tomcat7:shutdown",
+        },
+        {
+            "label": "Maven: tomcat7:debug",
+            "type": "shell",
+            "command": "set MAVEN_OPTS=\"$MAVEN_OPTS -agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n\"; mvnDebug tomcat7:run",
+            "group": "build",
+            "isBackground": true,
+            "problemMatcher": [
+                {
+                    "pattern": [
+                        {
+                            "regexp": "\\b\\B",
+                            "file": 1,
+                            "location": 2,
+                            "message": 3
+                        }
+                    ],
+                    "background": {
+                        "activeOnStart": true,
+                        "beginsPattern": "^.*Listening for",
+                        "endsPattern": "^.*transport dt_socket at address.*"
+                    }
+                }
+            ],
+            "dependsOn": "Maven: clean install",
+        },
+        {
+            "label": "Terminate All Tasks",
+            "command": "echo ${input:terminate}",
+            "type": "shell",
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+    {
+      "id": "terminate",
+      "type": "command",
+      "command": "workbench.action.tasks.terminate",
+      "args": "terminateAll"
+    }
+  ]
+}

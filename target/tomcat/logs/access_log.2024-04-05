@@ -1,0 +1,4 @@
+0:0:0:0:0:0:0:1 - - [05/Apr/2024:19:06:23 +0700] "GET /login.htm HTTP/1.1" 200 3214 http-bio-99-exec-1 569
+0:0:0:0:0:0:0:1 - - [05/Apr/2024:19:06:23 +0700] "GET /resources/loginpage/login.css HTTP/1.1" 404 1009 http-bio-99-exec-2 4
+0:0:0:0:0:0:0:1 - - [05/Apr/2024:19:06:23 +0700] "GET /resources/loginpage/images/1.png HTTP/1.1" 200 51511 http-bio-99-exec-3 10
+0:0:0:0:0:0:0:1 - - [05/Apr/2024:19:06:32 +0700] "GET /user/index.htm HTTP/1.1" 200 510 http-bio-99-exec-4 1080
